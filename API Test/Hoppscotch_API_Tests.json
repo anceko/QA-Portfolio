@@ -1,0 +1,55 @@
+[
+  {
+    "v": 8,
+    "name": "Public_API_Validation_Ance_Koneska",
+    "folders": [],
+    "requests": [
+      {
+        "v": "14",
+        "name": "User Data API Testing: GET/POST Validation",
+        "method": "GET",
+        "endpoint": "https://jsonplaceholder.typicode.com/users/1",
+        "params": [],
+        "headers": [],
+        "preRequestScript": "",
+        "testScript": "// Test 1: Verify HTTP status is 200 (success)\npm.test(\"Status is 200\", () => {\n  pm.response.to.have.status(200);\n});\n\n// Test 2: Check if response contains user ID 1\npm.test(\"User ID is correct\", () => {\n  const data = pm.response.json();\n  pm.expect(data.id).to.eql(1);\n});",
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "body": {
+          "contentType": null,
+          "body": null
+        },
+        "requestVariables": [],
+        "responses": {}
+      },
+      {
+        "v": "14",
+        "name": "User Data API Testing: GET Error Handling - Invalid User 404",
+        "method": "GET",
+        "endpoint": "https://jsonplaceholder.typicode.com/users/999",
+        "params": [],
+        "headers": [],
+        "preRequestScript": "",
+        "testScript": "pm.test(\"No data returned for invalid user\", () => {\n  pm.expect(pm.response.json()).to.be.empty; // or check for error message\n});",
+        "auth": {
+          "authType": "inherit",
+          "authActive": true
+        },
+        "body": {
+          "contentType": null,
+          "body": null
+        },
+        "requestVariables": [],
+        "responses": {}
+      }
+    ],
+    "headers": [],
+    "auth": {
+      "authType": "none",
+      "authActive": true
+    },
+    "_ref_id": "coll_mcadvu80_de3e4675-bc9f-4571-9d31-0cc68acccd2f"
+  }
+]
